@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Jumbotron} from 'react-bootstrap';
+import {Button,Card, Jumbotron} from 'react-bootstrap';
 import Viewdefect from './Viewdefect';
 import Adddefect from './Adddefect';
 
@@ -14,12 +14,18 @@ class Login extends React.Component{
     }
 
         setEmpState = (e) => {
+            // const value = e.target.value;
+            // const field =  e.target.name;
+            
+            // this.setState({[field]:value})
             const value = e.target.value;
-            const field =  e.target.name;
-            this.setState({[field]:value})
+            const name = e.target.name;
+            const pwd = e.target.pwd;
+            this.setState({[name]:value}) 
+            this.setState({[pwd]:value}) 
      }
      handleLogin = (e) => {
-         e.preventDefault();
+        // e.preventDefault();
          alert('Logged in successfully');
      }
 
@@ -28,9 +34,11 @@ class Login extends React.Component{
     render() {
         return (
         <React.Fragment>
-            <h1 style={{color:"black",margin:"40px",textAlign:"center"}}>Defect Tracker</h1>
+            <Card style={{margin:" 20px 80px"}}>
+            <h1 style={{color:"black",margin:"40px",textAlign:"center"}}><b>Defect Tracker</b></h1>
             <h3 style={{margin:"20px 400px", backgroundColor:"#34495E", textAlign:"center",color:"white"}}>Login</h3>
             <Jumbotron style={{margin:"0 400px"}}>
+            <p>{this.props.demotemp}</p>
             <form >
           
 
@@ -44,11 +52,12 @@ class Login extends React.Component{
                     <input style={{width:'100%'}} type="password" className="form-control" value={this.state.password} id="pwd" placeholder="Enter password" name="password" onChange={this.setEmpState} />
                 </div>
 
-               <button type="submit" className="btn #34495E" style={{backgroundColor:"#34495E",color:"white"}}onClick={this.handleLogin}>Login</button>
+               < button type="submit"style={{backgroundColor:"#34495E",color:"white"}}onClick={this.handleLogin}>Login</button>
                </form>
     
-
              </Jumbotron>
+             
+             </Card>
 
              <Viewdefect/>
 
